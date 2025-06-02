@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import PageHeader from "../components/PageHeader"
 
 export default function ProductDetail() {
     const { id } = useParams()
@@ -26,6 +27,8 @@ export default function ProductDetail() {
     if (!product) return <div className="p-4">Loading...</div>
 
     return (
+        <>
+        <PageHeader title="Product Detail" breadcrumb={["Dashboard", "Product Detail"]} />
         <div className="p-6 bg-white rounded-xl shadow-lg max-w-lg mx-auto mt-6">
             <img
                 src={product.thumbnail}
@@ -36,8 +39,9 @@ export default function ProductDetail() {
             <p className="text-gray-600 mb-1">Kategori: {product.category}</p>
             <p className="text-gray-600 mb-1">Brand: {product.brand}</p>
             <p className="text-gray-800 font-semibold text-lg">
-                Harga: Rp {product.price * 1000}
+                Harago: Rp {product.price * 1000}
             </p>
         </div>
+        </>
     )
 }
